@@ -55,6 +55,14 @@ Sent as publisher-4
 Sent as publisher-5
 ```
 
+## Related quotas and limits
+
+Please always review from the [authoritative source](https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-quotas) but at the time of writing, there is no limit to the amount of publishers as such. Publishers are created by the user and verified in Event Hubs service at the time of authentication (doesn't have to be pre-registered).
+
+There is a limit of 12 authorization rules (same as SAS policy) but one can create as many publishers per rule as wanted.
+
+The limit of number of brokered connections per namespace may effectively limit the amount of publishers as well because each publisher needs a new connection. This limit varies per tier but as an example, it is currently 5000 for the Standard tier.
+
 ## Attribution
 
 Most of the code originates from the [SDK samples](https://github.com/azure/azure-sdk-for-python/tree/main/sdk/eventhub/azure-eventhub/samples) and has been modified to work with publisher policies.
